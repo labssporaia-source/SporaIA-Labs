@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SporaIA Labs | Inteligencia Artificial para Acelerar tu Negocio</title>
+<meta name="description" content="SporaIA Labs desarrolla software, automatizaciones y herramientas de IA a medida: extracción de datos, automatización de procesos y análisis inteligente para profesionales y empresas.">
+
+<link rel="icon" type="image/jpeg" href="assets/brain-hero.jpg">
+<link rel="apple-touch-icon" href="assets/brain-hero.jpg">
+
+<meta property="og:title" content="SporaIA Labs | Inteligencia Artificial para Acelerar tu Negocio">
+<meta property="og:description" content="Automatización, extracción de datos y software a medida impulsado por IA, diseñado para tu proceso real.">
+<meta property="og:image" content="assets/brain-hero.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SporaIA Labs | Inteligencia Artificial para Acelerar tu Negocio">
+<meta name="twitter:description" content="Automatización, extracción de datos y software a medida impulsado por IA, diseñado para tu proceso real.">
+<meta name="twitter:image" content="assets/brain-hero.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #070a12;
+    --bg-soft: #0c111e;
+    --bg-card: #0f1626;
+    --line: rgba(125,150,210,0.14);
+    --cyan: #4DEFE0;
+    --cyan-dim: #2fb6ac;
+    --violet: #B45CFF;
+    --violet-dim: #8a4cd1;
+    --text: #EAF0FF;
+    --muted: #8C97B8;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit;}
+
+  ::selection{ background:var(--violet); color:#fff; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+
+  /* ---------- Layout helpers ---------- */
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 6%; }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin-bottom:1.1rem;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--cyan);
+    display:inline-block;
+  }
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; margin:0; }
+  .section-title{
+    font-size:clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height:1.15;
+    max-width:640px;
+    margin-bottom:1rem;
+  }
+  .section-lead{
+    color:var(--muted);
+    max-width:560px;
+    font-size:1.05rem;
+    margin-bottom:3rem;
+  }
+  section{ padding:7rem 0; position:relative; }
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:200;
+    background:rgba(7,10,18,0.78);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1180px;
+    margin:0 auto;
+    padding:1.1rem 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:700;
+    letter-spacing:0.01em;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:34px; height:34px;
+    border-radius:9px;
+    background:linear-gradient(135deg, var(--cyan), var(--violet));
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono);
+    font-weight:500;
+    color:#070a12;
+    font-size:0.8rem;
+  }
+  .brand small{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:0.55rem;
+    letter-spacing:0.18em;
+    color:var(--muted);
+    font-weight:400;
+    margin-top:1px;
+  }
+  .nav-links{ display:flex; gap:2.2rem; align-items:center; }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--muted);
+    font-size:0.92rem;
+    transition:color 0.25s ease;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-cta{
+    border:1px solid var(--cyan-dim);
+    color:var(--cyan) !important;
+    padding:0.55rem 1.15rem;
+    border-radius:7px;
+    font-size:0.85rem !important;
+    transition:all 0.25s ease;
+  }
+  .nav-cta:hover{ background:var(--cyan); color:var(--bg) !important; }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--text); font-size:1.4rem; cursor:pointer; }
+
+  @media (max-width:860px){
+    .nav-links{
+      position:fixed; top:64px; left:0; right:0;
+      background:var(--bg-soft);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:1.5rem 6% 2rem;
+      border-bottom:1px solid var(--line);
+      display:none;
+      gap:1.2rem;
+    }
+    .nav-links.open{ display:flex; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:7rem;
+    overflow:hidden;
+    position:relative;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 15%, rgba(180,92,255,0.16), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 85%, rgba(77,239,224,0.10), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap:3rem;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  @media (max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; }
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.7rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin-bottom:1.4rem;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(100deg, var(--cyan), var(--violet));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lead{
+    font-size:1.12rem;
+    color:var(--muted);
+    max-width:520px;
+    margin-bottom:2.3rem;
+  }
+  .hero-actions{ display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2.6rem; }
+  .btn{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:0.95rem;
+    padding:0.95rem 1.7rem;
+    border-radius:8px;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    border:1px solid transparent;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(100deg, var(--cyan), var(--violet));
+    color:#070a12;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 10px 30px -8px rgba(180,92,255,0.5); }
+  .btn-ghost{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--text);
+  }
+  .btn-ghost:hover{ border-color:var(--cyan-dim); color:var(--cyan); }
+
+  .hero-stats{ display:flex; gap:2.4rem; flex-wrap:wrap; }
+  .hero-stats div{ border-left:2px solid var(--cyan-dim); padding-left:0.9rem; }
+  .hero-stats strong{ font-family:var(--font-display); font-size:1.5rem; display:block; }
+  .hero-stats span{ font-size:0.8rem; color:var(--muted); }
+
+  .hero-art{ position:relative; }
+  .hero-art img{
+    border-radius:18px;
+    border:1px solid var(--line);
+    box-shadow:0 30px 80px -30px rgba(0,0,0,0.7), 0 0 60px -20px rgba(77,239,224,0.15);
+  }
+  .hero-art .float-tag{
+    position:absolute;
+    font-family:var(--font-mono);
+    font-size:0.72rem;
+    background:rgba(10,14,24,0.9);
+    border:1px solid var(--line);
+    padding:0.5rem 0.8rem;
+    border-radius:8px;
+    backdrop-filter:blur(6px);
+    animation:float 5s ease-in-out infinite;
+  }
+  .float-tag.t1{ top:8%; left:-8%; color:var(--cyan); animation-delay:0s; }
+  .float-tag.t2{ bottom:14%; right:-6%; color:var(--violet); animation-delay:1.3s; }
+  @media (max-width:980px){ .float-tag{ display:none; } }
+  @keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-10px); }
+  }
+
+  .logo-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:1.6rem 0;
+    background:var(--bg-soft);
+  }
+  .logo-strip .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:1rem;
+    font-family:var(--font-mono);
+    font-size:0.78rem;
+    color:var(--muted);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- Features ---------- */
+  .features{ background:var(--bg-soft); }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:1.4rem;
+  }
+  .feature-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:2rem 1.7rem;
+    transition:border-color 0.25s ease, transform 0.25s ease;
+  }
+  .feature-card:hover{ border-color:var(--cyan-dim); transform:translateY(-4px); }
+  .feature-icon{
+    width:42px; height:42px;
+    border-radius:10px;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:1.3rem;
+    background:linear-gradient(135deg, rgba(77,239,224,0.15), rgba(180,92,255,0.15));
+    border:1px solid var(--line);
+  }
+  .feature-card h3{ font-size:1.1rem; margin-bottom:0.6rem; }
+  .feature-card p{ color:var(--muted); font-size:0.92rem; margin:0; }
+
+  /* ---------- Process ---------- */
+  .process-list{ display:flex; flex-direction:column; }
+  .process-item{
+    display:grid;
+    grid-template-columns: 90px 1fr;
+    gap:1.5rem;
+    padding:2rem 0;
+    border-top:1px solid var(--line);
+    align-items:start;
+  }
+  .process-item:last-child{ border-bottom:1px solid var(--line); }
+  .process-num{
+    font-family:var(--font-mono);
+    color:var(--cyan);
+    font-size:0.95rem;
+  }
+  .process-item h3{ font-size:1.2rem; margin-bottom:0.5rem; }
+  .process-item p{ color:var(--muted); max-width:560px; margin:0; }
+
+  /* ---------- Product ---------- */
+  .product{ background:var(--bg-soft); }
+  .product-card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:3rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3rem;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .product-card::before{
+    content:"";
+    position:absolute; top:-40%; right:-20%;
+    width:400px; height:400px;
+    background:radial-gradient(circle, rgba(180,92,255,0.18), transparent 65%);
+    pointer-events:none;
+  }
+  @media (max-width:860px){ .product-card{ grid-template-columns:1fr; padding:2rem; } }
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    color:var(--cyan);
+    border:1px solid var(--cyan-dim);
+    padding:0.35rem 0.8rem;
+    border-radius:99px;
+    margin-bottom:1.3rem;
+  }
+  .badge::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--cyan); }
+  .product-card h3{ font-size:1.7rem; margin-bottom:1rem; }
+  .product-card p{ color:var(--muted); margin-bottom:1.6rem; }
+  .check-list{ list-style:none; padding:0; margin:0 0 2rem; display:grid; gap:0.7rem; }
+  .check-list li{ display:flex; gap:0.7rem; align-items:flex-start; font-size:0.94rem; color:var(--text); }
+  .check-list li::before{ content:"✓"; color:var(--cyan); font-weight:700; flex-shrink:0; }
+  .product-visual{
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:var(--bg);
+    font-family:var(--font-mono);
+    font-size:0.8rem;
+    padding:1.6rem;
+    color:var(--cyan);
+    overflow:hidden;
+  }
+  .product-visual .line{ color:var(--muted); margin-bottom:0.5rem; }
+  .product-visual .line span{ color:var(--violet); }
+  .product-visual .ok{ color:var(--cyan); }
+
+  /* ---------- Why us ---------- */
+  .why-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:1.4rem;
+  }
+  @media (max-width:860px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-card{ padding:1.5rem 0; }
+  .why-card strong{ display:block; font-family:var(--font-display); font-size:1.05rem; margin-bottom:0.5rem; }
+  .why-card p{ color:var(--muted); font-size:0.92rem; margin:0; }
+
+  /* ---------- About ---------- */
+  .about{ background:var(--bg-soft); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:3.5rem;
+    align-items:center;
+  }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{ color:var(--muted); }
+  .about-quote{
+    font-family:var(--font-display);
+    font-size:1.5rem;
+    line-height:1.4;
+    color:var(--text);
+    border-left:2px solid var(--violet);
+    padding-left:1.3rem;
+    margin:1.6rem 0;
+  }
+  .value-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .value-box{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:1.4rem;
+    background:var(--bg-card);
+  }
+  .value-box .num{ font-family:var(--font-mono); color:var(--violet); font-size:0.8rem; display:block; margin-bottom:0.5rem; }
+  .value-box h3{ font-size:1rem; margin-bottom:0.4rem; }
+  .value-box p{ font-size:0.85rem; color:var(--muted); margin:0; }
+
+  /* ---------- FAQ ---------- */
+  .faq-item{
+    border-top:1px solid var(--line);
+    padding:1.6rem 0;
+  }
+  .faq-item:last-child{ border-bottom:1px solid var(--line); }
+  .faq-q{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    gap:1rem;
+  }
+  .faq-q .plus{ font-family:var(--font-mono); color:var(--cyan); transition:transform 0.25s ease; flex-shrink:0; }
+  .faq-item.open .plus{ transform:rotate(45deg); }
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.3s ease;
+    color:var(--muted);
+    font-size:0.94rem;
+  }
+  .faq-item.open .faq-a{ max-height:200px; margin-top:0.9rem; }
+
+  /* ---------- Contact ---------- */
+  .contact{ background:var(--bg-soft); }
+  .contact-grid{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:3rem;
+  }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-info p{ color:var(--muted); margin-bottom:2rem; }
+  .contact-row{ display:flex; align-items:center; gap:0.9rem; margin-bottom:1.2rem; font-size:0.95rem; }
+  .contact-row .ico{
+    width:36px; height:36px; border-radius:9px;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-mono); font-size:0.85rem; color:var(--cyan);
+    flex-shrink:0;
+  }
+  .contact-row a{ text-decoration:none; color:var(--text); }
+  .contact-row a:hover{ color:var(--cyan); }
+
+  form{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:2.2rem;
+    display:grid;
+    gap:1.1rem;
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+  @media (max-width:540px){ .form-row{ grid-template-columns:1fr; } }
+  label{ font-size:0.82rem; color:var(--muted); margin-bottom:0.4rem; display:block; }
+  input, textarea, select{
+    width:100%;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:0.8rem 0.9rem;
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:0.92rem;
+  }
+  input:focus, textarea:focus, select:focus{ outline:2px solid var(--cyan-dim); outline-offset:1px; border-color:var(--cyan-dim); }
+  textarea{ resize:vertical; min-height:110px; }
+  .form-status{ font-size:0.85rem; color:var(--cyan); min-height:1.2em; }
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:3.5rem 0 2.5rem;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:2rem;
+    margin-bottom:2.5rem;
+  }
+  .footer-brand p{ color:var(--muted); font-size:0.9rem; max-width:280px; margin-top:0.8rem; }
+  .footer-links{ display:flex; gap:3.5rem; flex-wrap:wrap; }
+  .footer-col h4{
+    font-family:var(--font-mono);
+    font-size:0.75rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:1rem;
+  }
+  .footer-col a{ display:block; text-decoration:none; color:var(--text); font-size:0.9rem; margin-bottom:0.7rem; opacity:0.85; }
+  .footer-col a:hover{ color:var(--cyan); opacity:1; }
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:1rem;
+    padding-top:1.8rem;
+    border-top:1px solid var(--line);
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+
+  :focus-visible{ outline:2px solid var(--cyan); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="brand">
+      <span class="brand-mark">∑A</span>
+      <span>SporaIA Labs<small>AUTOMATIZACIÓN · IA · SOFTWARE</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#soluciones">Soluciones</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#producto">Producto</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto" class="nav-cta">Hablemos</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">☰</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Laboratorio de IA aplicada</div>
+        <h1>Convertimos <span class="accent">inteligencia artificial</span> en horas recuperadas para tu negocio</h1>
+        <p class="lead">Diseñamos y construimos automatizaciones, extracción de datos y software a medida que eliminan el trabajo repetitivo y dejan que tu equipo se enfoque en lo que realmente importa.</p>
+        <div class="hero-actions">
+          <a href="#producto" class="btn btn-primary">Ver DocXtract</a>
+          <a href="#contacto" class="btn btn-ghost">Agendar una llamada</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>4</strong><span>líneas de soluciones IA</span></div>
+          <div><strong>100%</strong><span>a medida del proceso</span></div>
+          <div><strong>&lt;48h</strong><span>primera respuesta</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <img src="assets/brain-hero.jpg" alt="SporaIA Labs — ilustración de una red neuronal en forma de cerebro con circuitos cian y violeta">
+        <div class="float-tag t1">// procesando documentos...</div>
+        <div class="float-tag t2">status: automatizado ✓</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="logo-strip">
+    <div class="wrap">
+      <span>EXTRACCIÓN DE DATOS</span>
+      <span>AUTOMATIZACIÓN DE PROCESOS</span>
+      <span>SOFTWARE A MEDIDA</span>
+      <span>ANÁLISIS INTELIGENTE</span>
+    </div>
+  </div>
+
+  <!-- FEATURES / SOLUCIONES -->
+  <section id="soluciones" class="features">
+    <div class="wrap">
+      <div class="eyebrow">Qué hacemos</div>
+      <h2 class="section-title">Cuatro formas de poner la IA a trabajar para ti</h2>
+      <p class="section-lead">No vendemos IA como concepto: la convertimos en herramientas concretas que resuelven un problema específico de tu día a día.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>Automatización inteligente</h3>
+          <p>Procesos repetitivos, flujos de trabajo y tareas administrativas que se ejecutan solos, sin intervención manual ni errores humanos.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📄</div>
+          <h3>Extracción de datos</h3>
+          <p>Extrae y organiza información clave de PDFs, imágenes, correos y formularios de forma automática, lista para usar o exportar.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧩</div>
+          <h3>Software personalizado</h3>
+          <p>Programas a medida impulsados por IA, diseñados para encajar en tu flujo de trabajo actual, no al revés.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Análisis inteligente</h3>
+          <p>Convierte datos crudos en insights accionables: dashboards, reportes automáticos y alertas que respaldan mejores decisiones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso">
+    <div class="wrap">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2 class="section-title">De un problema repetitivo a una solución funcionando</h2>
+      <p class="section-lead">Un proceso simple, pensado para moverse rápido sin perder calidad.</p>
+      <div class="process-list">
+        <div class="process-item">
+          <div class="process-num">01</div>
+          <div>
+            <h3>Diagnóstico del proceso</h3>
+            <p>Entendemos qué tarea te está quitando tiempo, qué datos maneja y dónde está el cuello de botella real.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">02</div>
+          <div>
+            <h3>Diseño de la solución</h3>
+            <p>Proponemos la arquitectura de IA y automatización más simple que resuelve el problema, sin sobreingeniería.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">03</div>
+          <div>
+            <h3>Desarrollo e integración</h3>
+            <p>Construimos la herramienta y la conectamos a tus sistemas actuales: archivos, correo, hojas de cálculo o software interno.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">04</div>
+          <div>
+            <h3>Entrega y soporte</h3>
+            <p>Pones la solución en marcha con acompañamiento directo nuestro y ajustes durante las primeras semanas de uso real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTO -->
+  <section id="producto" class="product">
+    <div class="wrap">
+      <div class="eyebrow">Producto destacado</div>
+      <h2 class="section-title">DocXtract</h2>
+      <p class="section-lead">Nuestra primera herramienta lista para usar. Próximamente disponible en Fiverr.</p>
+      <div class="product-card">
+        <div>
+          <span class="badge">Próximamente</span>
+          <h3>Extrae y organiza datos automáticamente</h3>
+          <p>DocXtract toma tus PDFs, imágenes y correos, identifica la información relevante y la entrega organizada y lista para usar. Pensado para contadores, abogados, equipos administrativos y cualquier negocio que procese grandes volúmenes de documentos.</p>
+          <ul class="check-list">
+            <li>Extracción automática de datos desde PDFs e imágenes</li>
+            <li>Organización estructurada lista para exportar</li>
+            <li>Reduce horas de captura manual a minutos</li>
+            <li>Adaptable a distintos formatos y plantillas de documentos</li>
+          </ul>
+          <a href="#contacto" class="btn btn-primary">Ser notificado del lanzamiento</a>
+        </div>
+        <div class="product-visual">
+          <img src="assets/brain-hero.jpg" alt="SporaIA Labs — red neuronal" style="width:54px; height:54px; object-fit:cover; border-radius:10px; margin-bottom:1rem; border:1px solid var(--line);">
+          <div class="line">$ docxtract --input contrato.pdf</div>
+          <div class="line"><span>→</span> detectando estructura del documento</div>
+          <div class="line"><span>→</span> extrayendo campos clave</div>
+          <div class="line"><span>→</span> validando datos extraídos</div>
+          <div class="line ok">✓ 18 campos exportados a datos.json</div>
+          <div class="line">tiempo total: 4.2s</div>
+        </div>
+      </div>
+      <p style="color:var(--muted); font-size:0.85rem; margin-top:1.3rem;">Todos nuestros programas y herramientas se publican en Fiverr listos para comprar en cuanto están terminados. Si nos contactas y te sugerimos una solución existente, te indicaremos cuándo y dónde estará disponible.</p>
+    </div>
+  </section>
+
+  <!-- AVISO -->
+  <section style="padding:0;">
+    <div class="wrap">
+      <div style="border:1px solid var(--line); border-radius:14px; padding:1.6rem 1.8rem; background:var(--bg-card); display:flex; gap:1rem; align-items:flex-start;">
+        <span style="font-family:var(--font-mono); color:var(--violet); font-size:1.2rem; flex-shrink:0;">ⓘ</span>
+        <p style="margin:0; color:var(--muted); font-size:0.92rem;">Por el momento <strong style="color:var(--text);">no estamos buscando colaboradores ni contratando personal.</strong> Este sitio es exclusivamente para clientes interesados en nuestras soluciones de IA y automatización.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ ELEGIRNOS -->
+  <section>
+    <div class="wrap">
+      <div class="eyebrow">Por qué SporaIA</div>
+      <h2 class="section-title">Pensado para resultados, no para impresionar</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <strong>Soluciones a medida</strong>
+          <p>Nada de plantillas genéricas: cada herramienta se diseña alrededor de tu proceso real.</p>
+        </div>
+        <div class="why-card">
+          <strong>Velocidad de laboratorio</strong>
+          <p>Equipo pequeño, decisiones rápidas. De la idea al prototipo funcional en días, no meses.</p>
+        </div>
+        <div class="why-card">
+          <strong>Comunicación directa</strong>
+          <p>Hablas directamente con quien construye la solución, sin intermediarios ni capas de gestión.</p>
+        </div>
+        <div class="why-card">
+          <strong>Tecnología práctica</strong>
+          <p>Usamos IA donde realmente aporta valor medible, no como adorno del producto.</p>
+        </div>
+        <div class="why-card">
+          <strong>Integración sin fricción</strong>
+          <p>Conectamos con las herramientas que ya usas: correo, hojas de cálculo, almacenamiento, software interno.</p>
+        </div>
+        <div class="why-card">
+          <strong>Soporte continuo</strong>
+          <p>Acompañamiento después de la entrega para ajustar la solución a medida que tu negocio crece.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="nosotros" class="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">Sobre nosotros</div>
+        <h2 class="section-title">Un laboratorio independiente de IA y automatización</h2>
+        <p>Somos un equipo especializado en inteligencia artificial, automatización y desarrollo de software. Nacimos para cerrar la distancia entre lo que la IA promete y lo que las empresas realmente pueden usar hoy.</p>
+        <p class="about-quote">"Velocidad + Innovación. Esa es nuestra esencia."</p>
+        <p>Creemos en herramientas prácticas, potentes y fáciles de usar que generan resultados reales y ahorran tiempo valioso desde el primer día.</p>
+      </div>
+      <div class="value-grid">
+        <div class="value-box">
+          <span class="num">SPORA</span>
+          <h3>Origen</h3>
+          <p>Como una espora, cada solución que creamos está diseñada para crecer y adaptarse a tu negocio.</p>
+        </div>
+        <div class="value-box">
+          <span class="num">IA</span>
+          <h3>Núcleo</h3>
+          <p>La inteligencia artificial como motor central de cada herramienta, no como una etiqueta de marketing.</p>
+        </div>
+        <div class="value-box">
+          <span class="num">LABS</span>
+          <h3>Método</h3>
+          <p>Experimentamos, medimos y refinamos cada solución hasta que funciona en el mundo real.</p>
+        </div>
+        <div class="value-box">
+          <span class="num">2026</span>
+          <h3>Etapa</h3>
+          <p>En crecimiento activo, construyendo nuestra primera línea de productos y casos de éxito.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2 class="section-title">Antes de escribirnos</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">¿Qué tipo de negocios pueden trabajar con SporaIA Labs? <span class="plus">+</span></div>
+          <div class="faq-a">Trabajamos con profesionales independientes, pequeñas y medianas empresas de cualquier industria que manejen procesos repetitivos, documentos o datos que hoy se procesan manualmente.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Cuánto tiempo toma desarrollar una solución a medida? <span class="plus">+</span></div>
+          <div class="faq-a">Depende de la complejidad, pero la mayoría de los proyectos van desde un prototipo funcional en pocos días hasta una solución completa en pocas semanas.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Necesito tener conocimientos técnicos para usar las herramientas? <span class="plus">+</span></div>
+          <div class="faq-a">No. Diseñamos cada herramienta pensando en el usuario final, con interfaces simples e instrucciones claras para tu equipo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Puedo probar DocXtract antes de contratar un proyecto a medida? <span class="plus">+</span></div>
+          <div class="faq-a">DocXtract estará disponible próximamente en Fiverr, listo para comprar directamente. Si quieres ser de los primeros en probarlo, escríbenos y te avisamos en cuanto esté publicado.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Cómo empezamos a trabajar juntos? <span class="plus">+</span></div>
+          <div class="faq-a">Escríbenos contándonos tu proceso actual. En menos de 48 horas te respondemos con un diagnóstico inicial y los próximos pasos.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">¿Están contratando personal o buscando colaboradores? <span class="plus">+</span></div>
+          <div class="faq-a">No. Por el momento no estamos buscando colaboradores ni contratando personal. Este sitio es exclusivamente para clientes interesados en nuestras soluciones de IA y automatización.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Si me sugieren un programa al contactarlos, ¿cómo lo obtengo? <span class="plus">+</span></div>
+          <div class="faq-a">Todas nuestras herramientas y programas se publican en Fiverr, listos para comprar directamente. Si te sugerimos una solución existente al contactarnos, te indicaremos cuándo y dónde estará disponible en Fiverr.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="wrap" style="max-width:640px; text-align:center; margin:0 auto;">
+      <div class="eyebrow" style="justify-content:center;">Contacto</div>
+      <h2 class="section-title" style="margin:0 auto 1rem; max-width:none;">Cuéntanos qué proceso quieres automatizar</h2>
+      <p class="section-lead" style="margin:0 auto 2.5rem; max-width:480px;">Estamos en etapa de crecimiento activo. Respondemos cada mensaje personalmente y solemos contestar en menos de 48 horas.</p>
+      <div style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap; margin-bottom:2.5rem;">
+        <a href="mailto:labssporaia@gmail.com" class="btn btn-primary">Escríbenos a labssporaia@gmail.com</a>
+        <a href="https://www.fiverr.com/pe/P2k46Vg" target="_blank" rel="noopener" class="btn btn-ghost">Ver en Fiverr</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark">∑A</span>
+          <span>SporaIA Labs</span>
+        </a>
+        <p>Laboratorio independiente de inteligencia artificial, automatización y desarrollo de software para profesionales y empresas.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navegación</h4>
+          <a href="#soluciones">Soluciones</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#producto">Producto</a>
+          <a href="#nosotros">Nosotros</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="mailto:labssporaia@gmail.com">labssporaia@gmail.com</a>
+          <a href="https://www.fiverr.com/pe/P2k46Vg" target="_blank" rel="noopener">Fiverr</a>
+        </div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="footer-bottom">
+      <span>© 2026 SporaIA Labs. Todos los derechos reservados.</span>
+      <span>IA práctica para un futuro más eficiente.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>
